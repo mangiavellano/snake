@@ -11,6 +11,5 @@ A javascript version of the famous game Snake.
 
  - Improve and clean code
  - Limit CPU usage
- - Add legend
  - Add 'invicibility' power
  - Add settings
