@@ -62,11 +62,11 @@ h1 {
 }
 
 .elem__food {
-  background-color: blue;
+  background-color: #0CD4B9;
 }
 
 .elem__poison {
-  background-color: red;
+  background-color: #D0001C;
 }
 
 .score {

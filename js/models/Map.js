@@ -4,10 +4,10 @@
 */
 
 const MAP_COLORS = {
-  empty: '#eee',
+  empty: '#fbfbfb',
   snake: '#333',
-  food: 'blue',
-  poison: 'red'
+  food: '#0cd4b9',
+  poison: '#d0001c'
 }
 
 const MAP_ELEMS = {
