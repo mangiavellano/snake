@@ -45,13 +45,21 @@ h1 {
 
 .infos ul {
   font-size: 12px;
-  padding: 0 0 0 10px;
+  padding: 0 0 0 15px;
+  margin: 5px 0 10px 0;
 }
 
 .infos ul li {
   list-style-type: none;
   margin: 0;
   line-height: 22px;
+}
+
+.infos__title {
+  font-size: 12px;
+  padding: 10px 0 0 10px;
+  font-weight: bold;
+  letter-spacing: 1.3px;
 }
 
 .elem {
