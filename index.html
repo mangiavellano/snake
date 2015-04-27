@@ -11,26 +11,39 @@
   </head>
 
   <body>
-    <h1>Snake - Artlist dev team</h1>
+    <h1>A snake game.</h1>
 
     <div class="container">
-      <canvas
-        id="game_canvas"
-        class="canvas"
-        width="800"
-        height="400">
-      </canvas>
+      <div class="infos">
+        <div class="score">
+          Score : <span id="score_value">0</span>
+        </div>
 
-      <div class="score">
-        Score : <span id="score_value"></span>
+        <ul>
+          <li><div class="elem elem__food"></div> Food (score +5)</li>
+          <li><div class="elem elem__poison"></div> Poison (score -5)</li>
+        </ul>
+
+        <div class="btn__start__container">
+          <button
+            id="start_btn"
+            class="btn__start"
+            onclick="startGame()">
+            Start
+          </button>
+        </div>
       </div>
 
-      <button
-        id="start_btn"
-        class="btn--start"
-        onclick="startGame()">
-        Start
-      </button>
+      <div class="canvas__container">
+        <canvas
+          id="game_canvas"
+          class="canvas"
+          width="800"
+          height="400">
+        </canvas>
+      </div>
+
+      <div class="clearfix"></div>
     </div>
   </body>
 

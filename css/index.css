@@ -8,20 +8,26 @@ html, body, h1, h2, h3, h4, h5, p, a, ul, li, span {
   color: #333;
 }
 
-html, body {
-  background-color: #f1f1f1;
+body {
+  background-color: #f5f5f0;
+  padding: 20px;
 }
 
 h1 {
-  text-align: center;
   font-size: 28px;
-  margin: 30px 0;
+  margin: 0 0 30px 0;
 }
 
 .container {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.canvas__container {
+  float: left;
   width: 800px;
   height: 470px;
-  margin: 0 auto;
+  margin: 0 0 0 20px;
 }
 
 .canvas {
@@ -29,12 +35,60 @@ h1 {
   background-color: #fff;
 }
 
-.btn--start {
+.infos {
+  position: relative;
   float: left;
-  width: 150px;
+  width: 200px;
+  height: 400px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.infos ul {
+  font-size: 12px;
+  padding: 0 0 0 10px;
+}
+
+.infos ul li {
+  list-style-type: none;
+  margin: 0;
+  line-height: 22px;
+}
+
+.elem {
+  width: 10px;
+  height: 10px;
+  float: left;
+  margin: 6px 10px 0 0;
+}
+
+.elem__food {
+  background-color: blue;
+}
+
+.elem__poison {
+  background-color: red;
+}
+
+.score {
+  width: 180px;
+  padding: 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+}
+
+.btn__start__container {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  margin: 0 auto;
   text-align: center;
-  padding: 10px 0;
-  margin: 5px 0 0 200px;
+}
+
+.btn__start {
+  text-align: center;
+  padding: 10px 20px;
   background-color: #333;
   color: #fff;
   border: none;
@@ -43,13 +97,11 @@ h1 {
   border-radius: 20px;
 }
 
-.btn--start:hover {
+.btn__start:hover {
   background-color: #444;
 }
 
-.score {
-  float: left;
-  width: 100px;
-  font-size: 14px;
-  padding: 5px 10px;
+.clearfix {
+  clear: both;
+  float: none;
 }
