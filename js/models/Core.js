@@ -111,6 +111,7 @@ Core.prototype.restart = function() {
   this._snake = new Snake();
   this._score = 0;
   this._map.dropElem(MAP_ELEMS.food, this._snake._body);
+  this._renderer.removeGameOver();
   this.start();
 }
 

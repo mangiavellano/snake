@@ -13,6 +13,7 @@ function Canvas(element, container, startBtn, scoreElem) {
   this._height    = this._element.height;
 
   this.createPauseElem();
+  this.createGameOverElem();
 }
 
 Canvas.prototype.createPauseElem = function() {
@@ -21,6 +22,14 @@ Canvas.prototype.createPauseElem = function() {
   this._pauseElem.innerHTML = 'Pause';
 
   this._elemContainer.appendChild(this._pauseElem);
+}
+
+Canvas.prototype.createGameOverElem = function() {
+  this._gameOverElem = document.createElement('div');
+  this._gameOverElem.className = 'game-over';
+  this._gameOverElem.innerHTML = 'Game Over';
+
+  this._elemContainer.appendChild(this._gameOverElem);
 }
 
 Canvas.prototype.initCellsSize = function(map) {
@@ -63,6 +72,7 @@ Canvas.prototype.displayScore = function(score) {
 }
 
 Canvas.prototype.setRestartMode = function(game) {
+  this.displayGameOver();
   this._startBtn.innerHTML = 'Restart';
   this._startBtn.onclick = function() { game.restart(); }
 }
@@ -73,4 +83,12 @@ Canvas.prototype.displayPause = function() {
 
 Canvas.prototype.removePause = function() {
   this._pauseElem.className = 'pause';
+}
+
+Canvas.prototype.displayGameOver = function() {
+  this._gameOverElem.className += ' active';
+}
+
+Canvas.prototype.removeGameOver = function() {
+  this._gameOverElem.className = ' game-over';
 }

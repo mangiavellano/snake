@@ -112,7 +112,20 @@ h1 {
 .pause {
   position: absolute;
   top: 160px;
-  left: 320px;
+  left: 285px;
+  text-align: center;
+  font-size: 60px;
+  text-transform: uppercase;
+  color: #0099bb;
+  text-shadow: 0px 2px 2px #333;
+  display: none;
+  font-weight: bold;
+}
+
+.game-over {
+  position: absolute;
+  top: 160px;
+  left: 245px;
   text-align: center;
   font-size: 60px;
   text-transform: uppercase;
@@ -122,7 +135,8 @@ h1 {
   font-weight: bold;
 }
 
-.pause.active {
+.pause.active,
+.game-over.active {
   display: block;
 }
 
