@@ -1,0 +1,38 @@
+<!doctype html>
+  <head>
+    <title>Snake - Artlist dev team</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/models/Canvas.js"></script>
+    <script src="js/models/Map.js"></script>
+    <script src="js/models/Snake.js"></script>
+    <script src="js/models/InputManager.js"></script>
+    <script src="js/models/FrameManager.js"></script>
+    <script src="js/models/Core.js"></script>
+  </head>
+
+  <body>
+    <h1>Snake - Artlist dev team</h1>
+
+    <div class="container">
+      <canvas
+        id="game_canvas"
+        class="canvas"
+        width="800"
+        height="400">
+      </canvas>
+
+      <div class="score">
+        Score : <span id="score_value"></span>
+      </div>
+
+      <button
+        id="start_btn"
+        class="btn--start"
+        onclick="startGame()">
+        Start
+      </button>
+    </div>
+  </body>
+
+  <script src="js/index.js"></script>
+</html>
