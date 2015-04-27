@@ -90,6 +90,7 @@ Core.prototype.loop = function() {
 
 Core.prototype.pause = function() {
   this._activeLoop = false;
+  this._renderer.displayPause();
 }
 
 Core.prototype.switchMode = function() {
@@ -100,6 +101,7 @@ Core.prototype.start = function() {
   var self = this;
   this._activeLoop = true;
   this.updateScore(0);
+  this._renderer.removePause();
 
   window.requestAnimationFrame(function() { self.loop(); });
 }
@@ -115,14 +117,11 @@ Core.prototype.restart = function() {
 Core.prototype.gameOver = function() {
   var self = this;
 
-  this.pause();
+  this._activeLoop = false;
   this._map = null;
   this._snake = null;
   this._inputManager.reset();
-
-  // TODO: create method, private properties shouldn't be modified outside of the class
-  this._renderer._startBtn.innerHTML = 'Restart';
-  this._renderer._startBtn.onclick = function() { self.restart(); }
+  this._renderer.setRestartMode(self);
 }
 
 Core.prototype.updateScore = function(score) {

@@ -3,8 +3,8 @@
 ** 04-23-2015
 */
 
-html, body, h1, h2, h3, h4, h5, p, a, ul, li, span {
-  font-family: Trebuchet MS;
+html, body, h1, h2, h3, h4, h5, p, a, ul, li, span, button {
+  font-family: Consolas, Monaco;
   color: #333;
 }
 
@@ -26,6 +26,7 @@ h1 {
 .canvas__container {
   float: left;
   width: 800px;
+  position: relative;
   margin: 0 20px;
 }
 
@@ -106,6 +107,23 @@ h1 {
 
 .btn__start:hover {
   background-color: #444;
+}
+
+.pause {
+  position: absolute;
+  top: 160px;
+  left: 320px;
+  text-align: center;
+  font-size: 60px;
+  text-transform: uppercase;
+  color: #bb0000;
+  text-shadow: 0px 2px 2px #333;
+  display: none;
+  font-weight: bold;
+}
+
+.pause.active {
+  display: block;
 }
 
 .clearfix {
