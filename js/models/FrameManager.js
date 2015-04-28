@@ -3,28 +3,29 @@
 ** 04-26-2015
 */
 
-function FrameManager(renderer) {
-  this._step = 1 / GAME_SPEEDS.hard;
-  this._dt   = 0;
-  this._last = this.currentTimestamp();
+function FrameManager() {
+  this._lastTime = Date.now();
+  this._frameTime = 0;
+  this._fixedFrameTime = GAME_SPEEDS.hard;
+  this._time = 0;
 }
 
-FrameManager.prototype.currentTimestamp = function() {
-  var currentTime;
+FrameManager.prototype.tick = function() {
+  var now   = Date.now();
+  var delta = now - this._lastTime;
 
-  if (window.performance && window.performance.now) {
-    currentTime = window.performance.now();
-  } else {
-    currentTime = Date.now();
+  if (delta < this._fixedFrameTime) {
+    return false;
   }
 
-  return currentTime;
-}
+  if (delta > this._fixedFrameTime * 2) {
+    this._frameTime = this._fixedFrameTime;
+  } else {
+    this._frameTime = delta;
+  }
 
-FrameManager.prototype.incrementDt = function(currentTimestamp) {
-  this._dt += Math.min(1, (currentTimestamp - this._last) / 1000);
-}
+  this._time += this._frameTime;
+  this._lastTime = now;
 
-FrameManager.prototype.decrementDt = function() {
-  this._dt -= this._step;
+  return true;
 }

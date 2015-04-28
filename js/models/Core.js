@@ -10,9 +10,9 @@ const SNAKE_INITIAL_DIRECTION = DIRECTIONS.right;
 
 // Change the value of GAME_SPEED if models/FrameManager.js
 const GAME_SPEEDS = {
-  easy: 10,
-  normal: 15,
-  hard: 20
+  easy: 80,
+  normal: 50,
+  hard: 30
 }
 
 const POISON_FREQUENCES = {
@@ -27,11 +27,17 @@ function Core(renderer) {
   this._snake        = new Snake();
   this._inputManager = new InputManager(this);
   this._frameManager = new FrameManager();
+  this._boundGameRun = null;
   this._activeLoop   = false;
   this._score        = 0;
 
+  this.init();
+}
+
+Core.prototype.init = function() {
   this._renderer.initCellsSize(this._map);
   this._map.dropElem(MAP_ELEMS.food, this._snake._body);
+  this._boundGameRun = this.gameRun.bind(this);
 }
 
 Core.prototype.checkTouchedElem = function() {
@@ -55,37 +61,24 @@ Core.prototype.update = function() {
   this._snake.checkCollisions(this._map);
   this.checkTouchedElem();
 
-  if (!this._snake._alive) {
-    this.gameOver();
-    return false;
-  }
-
-  return true;
+  if (!this._snake._alive) { this.gameOver(); }
 }
 
-Core.prototype.render = function() {
+Core.prototype.draw = function() {
   this._renderer.render(this._map, this._snake);
 }
 
-Core.prototype.loop = function() {
-  var self  = this;
-  const currentTimestamp = this._frameManager.currentTimestamp();
+Core.prototype.run = function() {
+  this.update();
+  this.draw();
+}
 
-  this._frameManager.incrementDt(currentTimestamp);
-
-  while (this._frameManager._dt > this._frameManager._step) {
-    this._frameManager.decrementDt();
-    // Update game logic if loop is active
-    if (this._activeLoop) { this.update(); }
+Core.prototype.gameRun = function() {
+  if (this._frameManager.tick() && this._activeLoop) {
+    this.run();
   }
 
-  // Render game if loop is active
-  if (this._activeLoop) { this.render(); }
-
-  // TODO: create method, private properties shouldn't be modified outside of the class
-  this._frameManager._last = currentTimestamp;
-
-  window.requestAnimationFrame(function() { self.loop() });
+  requestAnimationFrame(this._boundGameRun);
 }
 
 Core.prototype.pause = function() {
@@ -98,12 +91,10 @@ Core.prototype.switchMode = function() {
 }
 
 Core.prototype.start = function() {
-  var self = this;
   this._activeLoop = true;
   this.updateScore(0);
   this._renderer.removePause();
-
-  window.requestAnimationFrame(function() { self.loop(); });
+  this.gameRun();
 }
 
 Core.prototype.restart = function() {
@@ -112,6 +103,7 @@ Core.prototype.restart = function() {
   this._score = 0;
   this._map.dropElem(MAP_ELEMS.food, this._snake._body);
   this._renderer.removeGameOver();
+  this._inputManager.reset();
   this.start();
 }
 
@@ -121,7 +113,6 @@ Core.prototype.gameOver = function() {
   this._activeLoop = false;
   this._map = null;
   this._snake = null;
-  this._inputManager.reset();
   this._renderer.setRestartMode(self);
 }
 
