@@ -3,22 +3,22 @@
 ** 04-23-2015
 */
 
+const FOOD_SCORE = 5;
+const POISON_SCORE = -5;
+
 const MAP_COLORS = {
   empty: '#fbfbfb',
   snake: '#333',
   food: '#0cd4b9',
   poison: '#d0001c'
-}
+};
 
 const MAP_ELEMS = {
   empty: 0,
   snake: 1,
   food: 2,
   poison: 3
-}
-
-const FOOD_SCORE = 5;
-const POISON_SCORE = -5;
+};
 
 function Map() {
   this._cols = MAP_COLS;

@@ -8,20 +8,19 @@ const MAP_COLS = 40;
 const SNAKE_INITIAL_SIZE = 4;
 const SNAKE_INITIAL_DIRECTION = DIRECTIONS.right;
 
-// Change the value of GAME_SPEED if models/FrameManager.js
 const GAME_SPEEDS = {
   easy: 80,
   normal: 50,
   hard: 30
-}
+};
 
 const POISON_FREQUENCES = {
   easy: 10,
   normal: 7,
   hard: 5
-}
+};
 
-function Core(renderer) {
+function Core() {
   this._renderer     = new GraphicManager();
   this._map          = new Map();
   this._snake        = new Snake();
