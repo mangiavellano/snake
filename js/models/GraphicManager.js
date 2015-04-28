@@ -1,22 +1,28 @@
 /*
-** Canvas class
+** Graphic Manager class
 ** 04-23-2015
 */
 
-function Canvas(element, container, startBtn, scoreElem) {
-  this._element   = element;
-  this._ctx       = this._element.getContext('2d');
-  this._startBtn  = startBtn;
-  this._scoreElem = scoreElem;
-  this._elemContainer = container;
-  this._width     = this._element.width;
-  this._height    = this._element.height;
+const CANVAS_ID = 'game_canvas';
+const START_BTN_ID = 'start_btn';
+const SCORE_ID = 'score_value';
+const CONTAINER_ID = 'game_container';
+
+function GraphicManager() {
+  this._canvas    = document.getElementById(CANVAS_ID);
+  this._ctx       = this._canvas.getContext('2d');
+  this._width     = this._canvas.width;
+  this._height    = this._canvas.height;
+
+  this._startBtn  = document.getElementById(START_BTN_ID);;
+  this._scoreElem = document.getElementById(SCORE_ID);;
+  this._elemContainer = document.getElementById(CONTAINER_ID);;
 
   this.createPauseElem();
   this.createGameOverElem();
 }
 
-Canvas.prototype.createPauseElem = function() {
+GraphicManager.prototype.createPauseElem = function() {
   this._pauseElem = document.createElement('div');
   this._pauseElem.className = 'pause';
   this._pauseElem.innerHTML = 'Pause';
@@ -24,7 +30,7 @@ Canvas.prototype.createPauseElem = function() {
   this._elemContainer.appendChild(this._pauseElem);
 }
 
-Canvas.prototype.createGameOverElem = function() {
+GraphicManager.prototype.createGameOverElem = function() {
   this._gameOverElem = document.createElement('div');
   this._gameOverElem.className = 'game-over';
   this._gameOverElem.innerHTML = 'Game Over';
@@ -32,19 +38,19 @@ Canvas.prototype.createGameOverElem = function() {
   this._elemContainer.appendChild(this._gameOverElem);
 }
 
-Canvas.prototype.initCellsSize = function(map) {
+GraphicManager.prototype.initCellsSize = function(map) {
   this._cellWidth  = this._width / map._cols;
   this._cellHeight = this._height / map._rows;
 }
 
-Canvas.prototype.render = function(map, snake) {
+GraphicManager.prototype.render = function(map, snake) {
   this.clearMap(map);
   this.drawElems('snake', snake._body);
   this.drawElems('food', map._foodElems);
   this.drawElems('poison', map._poisonElems);
 }
 
-Canvas.prototype.clearMap = function(map) {
+GraphicManager.prototype.clearMap = function(map) {
   this._ctx.fillStyle = MAP_COLORS.empty;
   this._ctx.fillRect(
     0,
@@ -54,7 +60,7 @@ Canvas.prototype.clearMap = function(map) {
   );
 }
 
-Canvas.prototype.drawElems = function(elemType, elems) {
+GraphicManager.prototype.drawElems = function(elemType, elems) {
   this._ctx.fillStyle = MAP_COLORS[elemType];
 
   for (var i = 0; i < elems.length; i++) {
@@ -67,28 +73,28 @@ Canvas.prototype.drawElems = function(elemType, elems) {
   }
 }
 
-Canvas.prototype.displayScore = function(score) {
+GraphicManager.prototype.displayScore = function(score) {
   this._scoreElem.innerHTML = score;
 }
 
-Canvas.prototype.setRestartMode = function(game) {
+GraphicManager.prototype.setRestartMode = function(game) {
   this.displayGameOver();
   this._startBtn.innerHTML = 'Restart';
   this._startBtn.onclick = function() { game.restart(); }
 }
 
-Canvas.prototype.displayPause = function() {
+GraphicManager.prototype.displayPause = function() {
   this._pauseElem.className += ' active';
 }
 
-Canvas.prototype.removePause = function() {
+GraphicManager.prototype.removePause = function() {
   this._pauseElem.className = 'pause';
 }
 
-Canvas.prototype.displayGameOver = function() {
+GraphicManager.prototype.displayGameOver = function() {
   this._gameOverElem.className += ' active';
 }
 
-Canvas.prototype.removeGameOver = function() {
+GraphicManager.prototype.removeGameOver = function() {
   this._gameOverElem.className = ' game-over';
 }

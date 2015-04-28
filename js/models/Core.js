@@ -22,7 +22,7 @@ const POISON_FREQUENCES = {
 }
 
 function Core(renderer) {
-  this._renderer     = renderer;
+  this._renderer     = new GraphicManager();
   this._map          = new Map();
   this._snake        = new Snake();
   this._inputManager = new InputManager(this);
