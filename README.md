@@ -9,6 +9,6 @@ A javascript version of the famous game Snake.
 
 ## Todo
 
- - Improve and clean code
+ - Improve GraphicManager
  - Add 'invicibility' power
  - Add settings

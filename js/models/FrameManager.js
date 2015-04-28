@@ -6,7 +6,7 @@
 function FrameManager() {
   this._lastTime = Date.now();
   this._frameTime = 0;
-  this._fixedFrameTime = GAME_SPEEDS.hard;
+  this._fixedFrameTime = GAME_SPEEDS.normal;
   this._time = 0;
 }
 
