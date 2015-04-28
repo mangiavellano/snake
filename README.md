@@ -10,6 +10,5 @@ A javascript version of the famous game Snake.
 ## Todo
 
  - Improve and clean code
- - Limit CPU usage
  - Add 'invicibility' power
  - Add settings
