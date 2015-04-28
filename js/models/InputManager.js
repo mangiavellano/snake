@@ -29,20 +29,16 @@ InputManager.prototype.bindInputListeners = function() {
   }, false);
 }
 
-InputManager.prototype.unbindInputListeners = function() {
-  var self = this;
-
-  window.removeEventListener('keydown', function(event) {
-    self.bindKeyDown(event);
-  }, false);
-}
-
 InputManager.prototype.bindKeyDown = function(event) {
   this._keydown = event.which;
-  this.updateGame();
+  this.forceUpdateGame();
 }
 
-InputManager.prototype.updateGame = function() {
+InputManager.prototype.unbindKeyDown = function() {
+  this._keydown = null;
+}
+
+InputManager.prototype.forceUpdateGame = function() {
   if (!this._game._snake) { return; }
 
   if (this._keydown === KEY_CODES.escape) {

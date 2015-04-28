@@ -57,6 +57,8 @@ Snake.prototype.updateDirection = function(keycode) {
   if (!keycode) { return; }
   const direction = keycode - KEYBOARD_CONST;
 
+  if (direction < DIRECTIONS.left || direction > DIRECTIONS.down) { return; }
+
   if (
       (direction % 2 == 0 && this._direction % 2 != 0) ||
       (direction % 2 != 0 && this._direction % 2 == 0)
