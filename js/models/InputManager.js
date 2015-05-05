@@ -34,10 +34,6 @@ InputManager.prototype.bindKeyDown = function(event) {
   this.forceUpdateGame();
 }
 
-InputManager.prototype.unbindKeyDown = function() {
-  this._keydown = null;
-}
-
 InputManager.prototype.forceUpdateGame = function() {
   if (!this._game._snake) { return; }
 
