@@ -6,6 +6,9 @@
 const FOOD_SCORE = 5;
 const POISON_SCORE = -5;
 
+const MAP_ROWS = 20;
+const MAP_COLS = 40;
+
 const MAP_COLORS = {
   empty: '#fbfbfb',
   snake: '#333',

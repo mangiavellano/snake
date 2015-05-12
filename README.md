@@ -11,4 +11,3 @@ A javascript version of the famous game Snake.
 
  - Improve GraphicManager
  - Add 'invicibility' power
- - Add settings

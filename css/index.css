@@ -46,7 +46,7 @@ h1 {
 
 .infos ul {
   font-size: 12px;
-  padding: 0 0 0 15px;
+  padding: 0 15px;
   margin: 5px 0 10px 0;
 }
 
@@ -54,6 +54,20 @@ h1 {
   list-style-type: none;
   margin: 0;
   line-height: 22px;
+  clear: both;
+  float: none;
+}
+
+.infos ul li .settings--label {
+  float: left;
+}
+
+.infos ul li select {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+  float: right;
+  margin-top: 2px;
 }
 
 .infos__title {

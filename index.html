@@ -6,6 +6,7 @@
     <script src="js/models/InputManager.js"></script>
     <script src="js/models/FrameManager.js"></script>
     <script src="js/models/Map.js"></script>
+    <script src="js/models/Settings.js"></script>
     <script src="js/models/Snake.js"></script>
     <script src="js/models/Core.js"></script>
   </head>
@@ -19,6 +20,7 @@
           Score : <span id="score_value">0</span>
         </div>
 
+        <!-- How to play -->
         <div class="infos__title">
           How to play:
         </div>
@@ -26,7 +28,9 @@
           <li><strong>&larr; &rarr; &uarr; &darr;</strong> : Move</li>
           <li><strong>Esc</strong> : Pause</li>
         </ul>
+        <!-- How to play end -->
 
+        <!-- Elements -->
         <div class="infos__title">
           Elements:
         </div>
@@ -34,17 +38,57 @@
           <li><div class="elem elem__food"></div> Food (score +5)</li>
           <li><div class="elem elem__poison"></div> Poison (score -5)</li>
         </ul>
+        <!-- Elements end -->
+
+        <!-- Settings -->
+        <div class="infos__title">
+          Settings:
+        </div>
+        <form id="settings_form">
+          <ul>
+            <li>
+              <div class="settings--label">Speed:</div>
+              <select name="speed">
+                <option value="80">Easy</option>
+                <option value="50" selected>Normal</option>
+                <option value="30">Hard</option>
+              </select>
+            </li>
+            <li>
+              <div class="settings--label">Cross Map:</div>
+              <select name="crossMap">
+                <option value="1" selected>Yes</option>
+                <option value="0">No</option>
+              </select>
+            </li>
+            <li>
+              <div class="settings--label">Poison:</div>
+              <select name="poisonFrequence">
+                <option value="0">None</option>
+                <option value="10" selected>Easy</option>
+                <option value="7">Normal</option>
+                <option value="5">Hard</option>
+              </select>
+            </li>
+          </ul>
+        </form>
+        <!-- Settings end -->
 
         <div class="btn__start__container">
           <button
             id="start_btn"
             class="btn__start"
-            onclick="startGame()">
+            onclick="startGame({
+              speed: document.getElementById('settings_form').speed.value,
+              crossMap: document.getElementById('settings_form').crossMap.value,
+              poisonFrequence: document.getElementById('settings_form').poisonFrequence.value
+            })">
             Start
           </button>
         </div>
       </div>
 
+      <!-- Canvas -->
       <div id='game_container' class="canvas__container">
         <canvas
           id="game_canvas"
@@ -53,12 +97,13 @@
           height="400">
         </canvas>
       </div>
+      <!-- Canvas end -->
 
       <div class="clearfix"></div>
     </div>
 
     <div class="copyright">
-      Anthony Mangiavellano - 2015 - <a href="https://github.com/mangiavellano/snake" target="_blank">See on Github</a>
+      Anthony Mangiavellano - 2015 - <a href="https://github.com/mangiavellano/snake" target="_blank">Fork on Github</a>
     </div>
   </body>
 

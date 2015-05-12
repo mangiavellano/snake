@@ -1,10 +1,12 @@
 /*
-** Index
-** 04-23-2015
+** index.js
+** A snake game
+** Anthony Mangiavellano - 04-23-2015
 */
 
-function startGame() {
+function startGame(options) {
   var game = new Core();
 
+  game.setOptions(options);
   game.start();
 }

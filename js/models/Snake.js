@@ -67,7 +67,7 @@ Snake.prototype.updateDirection = function(keycode) {
   }
 }
 
-Snake.prototype.move = function() {
+Snake.prototype.move = function(map, crossMap) {
   var x = this.getHead().x;
   var y = this.getHead().y;
 
@@ -84,6 +84,13 @@ Snake.prototype.move = function() {
     case DIRECTIONS.left:
       x -= 1;
       break;
+  }
+
+  if (crossMap > 0) {
+    if (x >= map._cols) { x = 0; }
+    else if (x < 0) { x = map._cols - 1; }
+    else if (y >= map._rows) { y = 0; }
+    else if (y < 0) { y = map._rows - 1; }
   }
 
   this._body.pop();
@@ -142,11 +149,11 @@ Snake.prototype.isOnElem = function(map) {
   return false;
 }
 
-Snake.prototype.checkCollisions = function(map) {
+Snake.prototype.checkCollisions = function(map, crossMap) {
   const elemType = this.isOnElem(map);
 
   // Snake is out of map of touches himself
-  if (this.isOutOfMap(map) || this.touchesHimself()) {
+  if ((this.isOutOfMap(map) && crossMap == 0) || this.touchesHimself()) {
     this._alive = false;
   }
 
